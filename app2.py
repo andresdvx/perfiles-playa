@@ -5,9 +5,9 @@ from scipy.interpolate import lagrange, CubicSpline, BarycentricInterpolator
 from numpy.polynomial import Polynomial
 
 # 1. Leer los datos desde un archivo Excel
-data = pd.read_excel('analisis.xlsx')  # Cambia al nombre de tu archivo
+data = pd.read_excel('analisis.xlsx')  
 
-# Supongamos que tus datos son columnas 'x' y 'y'
+
 x = data['x'].to_numpy()
 y = data['y'].to_numpy()
 
@@ -29,7 +29,7 @@ newton_interp = BarycentricInterpolator(x, y)
 y_newton = newton_interp(x_fine)
 
 # Regresión polinomial (grado mejor ajustado)
-grado = min(len(x) - 1, 5)  # Grado máximo 5 o menos si hay pocos puntos
+grado = min(len(x) - 1, 5)  
 coefs = np.polyfit(x, y, grado)
 poly_regresion = np.poly1d(coefs)
 y_regresion = poly_regresion(x_fine)
@@ -41,7 +41,7 @@ def calcular_metricas(y_real, y_predicho):
     correlacion = np.corrcoef(y_real, y_predicho)[0, 1]  # Coeficiente de correlación
     return error, correlacion
 
-# Calculamos
+# Calcular
 error_lagrange, corr_lagrange = calcular_metricas(y, poly_lagrange(x))
 error_spline, corr_spline = calcular_metricas(y, spline(x))
 error_newton, corr_newton = calcular_metricas(y, newton_interp(x))

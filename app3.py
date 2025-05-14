@@ -85,7 +85,7 @@ def calcular_correlacion(y_real, y_pred):
 # ------------------------------
 
 # 1. Leer Excel
-archivo = 'perfiles-playa.xlsx'  # Tu archivo
+archivo = 'perfiles-playa.xlsx'  
 data = pd.read_excel(archivo)
 
 # Variables
